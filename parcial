@@ -1,0 +1,10 @@
+main :: IO ()
+main = do
+  putStrLn "Hello, World!"
+primo :: Integral a => a -> Bool
+primo b | b <= 1    = False
+          | otherwise = not (any (\x -> b `mod` x == 0) [2..isqrt b])
+          where isqrt = floor . sqrt . fromIntegral
+
+lista :: Integer -> [Integer]
+lista x = filter primo [2..x]
